@@ -8,7 +8,7 @@ from io import BytesIO
 from PIL import Image
 import tensorflow as tf
 from keras.layers import TFSMLayer
-
+import pandas as pd
 app = FastAPI()
 
 # CORS (Cross-Origin Resource Sharing)
