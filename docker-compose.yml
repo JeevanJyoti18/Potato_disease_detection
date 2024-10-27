@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  fastapi-app:
+    build: ./api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - tf-serving
+    volumes:
+      - ./api:/app
+
+  tf-serving:
+    image: tensorflow/serving
+    ports:
+      - "8502:8501"
+    command: --model_name=potatoes_model --model_base_path=/models/potatoes_model
+    volumes:
+      - ./saved_models:/models/potatoes_model
